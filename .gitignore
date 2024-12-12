@@ -1,0 +1,8 @@
+.env
+AI-model
+house-simulation
+backend/node_modules
+prototype/.svelte-kit
+prototype/node_modules
+prototype/.env
+
