@@ -105,5 +105,6 @@
 		margin-right: 10px;
 		background-color: white;
 		padding: 40px;
+		border-radius: 15px;
 	}
 </style>

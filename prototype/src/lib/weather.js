@@ -50,7 +50,7 @@ export const fetchWeatherData = async () => {
 		console.log('data:', data);
 		for (let i = 0; i < 4; i++) {
 			let weatherJson = {
-				TG: data[i]?.TG, // Use optional chaining to prevent errors if data[0] is undefined
+				TG: data[i]?.TG,
 				Q: data[i]?.Q,
 				SQ: data[i]?.SQ,
 				SP: data[i]?.SP,

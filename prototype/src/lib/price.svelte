@@ -59,7 +59,7 @@
 				labels: labels,
 				datasets: [
 					{
-						label: 'Terugleververgoeding per Kwh in $',
+						label: 'Terugleververgoeding per Kwh',
 						data: returnPrice,
 						fill: false,
 						borderColor: '#0091D5',
@@ -99,6 +99,7 @@
 		grid-area: 1 / 1 / 3 / 5;
 		background: white;
 		margin-left: 10px;
+		border-radius: 15px;
 	}
 	canvas {
 		width: 100%;

@@ -1,4 +1,5 @@
 <script>
+	import '../app.css';
 	import { onMount, onDestroy } from 'svelte';
 	import Shepherd from 'shepherd.js';
 	import 'shepherd.js/dist/css/shepherd.css';
@@ -31,7 +32,7 @@
 			id: 'step1',
 			title: 'Input velden',
 			attachTo: { element: '.input1', on: 'bottom' },
-			text: 'Deze input velden simuleren de meterkast. In dit veld vul je het aantal Kwh in dat op dit moment wordt opgewekt door zonnepannelen.',
+			text: 'Deze invoervelden simuleren de meterkast. In dit veld vul je het aantal kWh in dat op dit moment wordt opgewekt door zonnepanelen.',
 			buttons: [
 				{ text: 'Terug', action: tour.back },
 				{ text: 'Volgende', action: tour.next }
@@ -40,9 +41,9 @@
 
 		tour.addStep({
 			id: 'step2',
-			title: 'Input velden (verbruik)',
+			title: 'Input velden',
 			attachTo: { element: '.input2', on: 'bottom' },
-			text: 'En in dit veld vul je het aantal Kwh in dat op dit moment wordt verbruikt door het huishouden.',
+			text: 'En in dit veld vul je het aantal kWh in dat op dit moment wordt verbruikt door het huishouden',
 			buttons: [
 				{ text: 'Terug', action: tour.back },
 				{ text: 'Volgende', action: tour.next }
@@ -51,8 +52,8 @@
 
 		tour.addStep({
 			id: 'step3',
-			title: 'Batterij',
-			text: 'In ons systeem maken wij gebruik van een oude autobatterij. Hier past ongeveer 40 Kwh in en in deze sectie kun je zien hoe ver de batterij is opgeladen',
+			title: 'Oude autobatterij',
+			text: 'In ons systeem gebruiken we een oude autobatterij met een capaciteit van ongeveer 40 kWh. In deze sectie kun je zien hoe vol de batterij is opgeladen',
 			attachTo: { element: '.battery-component', on: 'left' },
 			buttons: [
 				{ text: 'Terug', action: tour.back },
@@ -61,8 +62,8 @@
 		});
 		tour.addStep({
 			id: 'step4',
-			title: 'Terugleverprijs en leverprijs',
-			text: 'In dit kopje kun je zien hoeveel de batterij is opgeladen in procenten. In totaal past er in de batterij 40 Kw.',
+			title: 'Terugleververgoeding en leverprijs',
+			text: 'Hier kun je zien wat de terugleververgoeding en de leverprijs per kWh aan het net zijn. Deze gegevens worden door het programma gebruikt om keuzes te maken. Deze data is afkomstig van <a href="https://www.easyenergy.com/">easyenergy.com</a>',
 			attachTo: { element: '.price-component', on: 'right' },
 			buttons: [
 				{ text: 'Terug', action: tour.back },
@@ -73,7 +74,7 @@
 		tour.addStep({
 			id: 'step5',
 			title: 'Efficiëntie zonnepanelen',
-			text: 'Hier kun je weerzien hoe efficiënt de zonnepanelen staan, soms kan het namelijk handig zijn om zonnepanelen minder efficiënt te zetten.',
+			text: 'Hier kun je zien hoe efficiënt de zonnepanelen werken. Soms kan het namelijk handig zijn om de efficiëntie van de zonnepanelen te verlagen, bijvoorbeeld in de zomer wanneer er veel stroom wordt teruggeleverd aan het net.',
 			attachTo: { element: '.solar-component', on: 'right' },
 			scrollTo: true,
 			buttons: [
@@ -85,9 +86,7 @@
 		tour.addStep({
 			id: 'step6',
 			title: 'Voorspellingen',
-			text: `Wij hebben op basis van weerdata en data over huishoudelijk
-             verbruik een ai-model getraint die voorspelt op basis van wat het
-              weer doet hoeveel energie het huishouden gaat verbruiken en opwekken met zonnepanelen.`,
+			text: `Wij hebben op basis van weerdata en gegevens over huishoudelijk verbruik een AI-model getraind. Dit model voorspelt, op basis van het weer, hoeveel energie het huishouden zal verbruiken en opwekken met zonnepanelen.`,
 			attachTo: { element: '.predict-component', on: 'left' },
 
 			buttons: [
@@ -98,8 +97,8 @@
 
 		tour.addStep({
 			id: 'step7',
-			title: 'De laatste stap',
-			text: `Als je op deze knop drukt gaat hij op basis van alle info van net de beste keuze maken om zo zo min mogelijk netcongestie te veroorzaken`,
+			title: 'Bijna klaar',
+			text: `Als je op deze knop drukt gaat hij op basis van alle info van net de beste keuze maken om zo zo min mogelijk netcongestie te veroorzaken.`,
 			attachTo: { element: '.btn', on: 'bottom' },
 			scrollTo: true,
 			buttons: [
@@ -110,8 +109,8 @@
 
 		tour.addStep({
 			id: 'step8',
-			title: 'De laatste stap',
-			text: `Wat het programma op dit moment doet zie je hier weer`,
+			title: 'Bijna klaar',
+			text: `Wat het programma op dit moment doet zie je hier weer.`,
 			attachTo: { element: '.action', on: 'top' },
 			scrollTo: true,
 			buttons: [
@@ -122,8 +121,8 @@
 
 		tour.addStep({
 			id: 'end',
-			title: 'De laatste stap',
-			text: `Vul nu de input velden in en klik op de knop`,
+			title: 'Bijna klaar',
+			text: `Vul nu de input velden in en klik op de knop.`,
 			attachTo: { element: '.btn', on: 'bottom' },
 			scrollTo: true,
 			buttons: [
@@ -140,7 +139,7 @@
 	});
 </script>
 
-<slot />
+<slot></slot>
 
 <style>
 	:global(body) {
@@ -164,5 +163,19 @@
 	}
 	:global(html) {
 		scroll-behavior: smooth;
+	}
+	:global(.shepherd-button) {
+		background-color: rgb(81, 81, 168);
+		color: white;
+	}
+
+	:global(.shepherd-button:not(:disabled):hover) {
+		background-color: rgb(52, 52, 131);
+		color: white;
+	}
+
+	:global(a) {
+		text-decoration: none;
+		font-weight: bold;
 	}
 </style>

@@ -9,7 +9,8 @@
 	let predictionTake = [];
 	let predictionMake = [4.5, 6.2, 6.6, 3.7];
 	// API call
-	let BIGML_USERNAME = 'bokersten2008';
+	let BIGML_USERNAME = 'bokersten';
+
 	let BIGML_API_KEY = PUBLIC_API_KEY;
 	let BIGML_AUTH = `username=${BIGML_USERNAME}&api_key=${BIGML_API_KEY}`;
 	let data = null;
@@ -29,9 +30,10 @@
 			};
 
 			const body = JSON.stringify({
-				model: 'linearregression/67497ec64cb263d396703ff0',
+				model: 'linearregression/uwGh8s371wHQTuU6wag8RdIUA3I',
 				input_data: weatherData[i]
 			});
+			console.log(weatherData[i]);
 
 			try {
 				const response = await fetch(`https://bigml.io/andromeda/prediction?${BIGML_AUTH}`, {
@@ -39,6 +41,7 @@
 					headers: headers,
 					body: body
 				});
+				console.log(BIGML_AUTH);
 
 				if (!response.ok) {
 					throw new Error(`HTTP error! Status: ${response.status}`);
@@ -49,7 +52,7 @@
 					predictedUse.set(result.prediction['000001']);
 					predictedGen.set(predictionMake[i]);
 				}
-				console.log(result.prediction['000001']);
+				console.log('result:', result);
 
 				predictionTake.push((result.prediction['000001'] / 1000).toFixed(2));
 				data = {
